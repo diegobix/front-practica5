@@ -27,3 +27,8 @@ export type FilterType = {
   color: boolean | undefined;
   name: string;
 };
+
+export type ProjectType = {
+  name: string;
+  films: FilmType[];
+};

@@ -1,9 +1,17 @@
 import { FunctionComponent } from "preact";
 import { FilmType } from "../types.ts";
+import { modalSignal } from "../signals.ts";
+import { modalFilm } from "../signals.ts";
 
 const FilmPreview: FunctionComponent<{ film: FilmType }> = ({ film }) => {
   return (
-    <div class="filmPreview">
+    <div
+      class="filmPreview"
+      onClick={(e) => {
+        modalFilm.value = film;
+        modalSignal.value = true;
+      }}
+    >
       <div class="imgContainer">
         <img src={film.staticImageUrl} alt={film.name} />
         <span id="description">{film.description}</span>

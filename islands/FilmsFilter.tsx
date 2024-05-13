@@ -23,8 +23,6 @@ const FilmsFilter: FunctionComponent<{ films: FilmType[] }> = ({ films }) => {
     name: "",
   });
 
-  console.log("Render");
-
   const filteredFilms = films.filter((film) => {
     if (filter.value.brand && film.brand !== filter.value.brand) {
       return false;

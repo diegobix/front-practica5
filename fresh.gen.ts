@@ -7,6 +7,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $FilmsFilter from "./islands/FilmsFilter.tsx";
+import * as $ProjectModal from "./islands/ProjectModal.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -18,6 +19,7 @@ const manifest = {
   },
   islands: {
     "./islands/FilmsFilter.tsx": $FilmsFilter,
+    "./islands/ProjectModal.tsx": $ProjectModal,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
