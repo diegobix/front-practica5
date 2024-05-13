@@ -7,7 +7,7 @@ const Menu: FunctionComponent = () => {
         <i class="fa-solid fa-film"></i>
         <span>Films</span>
       </a>
-      <a href="#">
+      <a href="/projects">
         <i class="fa-solid fa-rectangle-list"></i>
         <span>Projects</span>
       </a>
