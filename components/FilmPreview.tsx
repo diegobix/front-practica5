@@ -9,8 +9,8 @@ const FilmPreview: FunctionComponent<{ film: FilmType }> = ({ film }) => {
         <span id="description">{film.description}</span>
       </div>
       <div class="info">
-        <span id="name">{film.name.toUpperCase()}</span>
-        <span id="brand">{film.brand.toUpperCase()}</span>
+        <h3 id="name">{film.name.toUpperCase()}</h3>
+        <h5 id="brand">{film.brand.toUpperCase()}</h5>
       </div>
     </div>
   );
