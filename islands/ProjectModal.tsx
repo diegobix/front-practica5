@@ -16,7 +16,7 @@ const ProjectModal: FunctionComponent = () => {
   const [projects, setProjects] = useState<ProjectType[]>([]);
 
   const [option, setOption] = useState<Option>(Option.create);
-  const [projectIndex, setProjectIndex] = useState<number>(-1);
+  const [projectIndex, setProjectIndex] = useState<number>(0);
   const [name, setName] = useState<string>("");
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const ProjectModal: FunctionComponent = () => {
   const createProject = (name: string, film: FilmType) => {
     projects.push({
       name,
-      films: [film],
+      filmsId: [film._id],
     });
 
     document.cookie = `projects=${JSON.stringify(projects)}`;
@@ -41,7 +41,7 @@ const ProjectModal: FunctionComponent = () => {
 
   const updateProject = (index: number, film: FilmType) => {
     const project = projects[index];
-    project.films.push(film);
+    project.filmsId.push(film._id);
 
     document.cookie = `projects=${JSON.stringify(projects)}`;
   };

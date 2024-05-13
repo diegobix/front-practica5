@@ -30,5 +30,5 @@ export type FilterType = {
 
 export type ProjectType = {
   name: string;
-  films: FilmType[];
+  filmsId: string[];
 };

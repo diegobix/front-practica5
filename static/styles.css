@@ -82,6 +82,12 @@ select {
   }
 }
 
+.projectFilms {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
 .filmPreview {
   cursor: pointer;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);

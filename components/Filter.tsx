@@ -10,7 +10,6 @@ const Filter: FunctionComponent<
   const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log("Added listener");
     globalThis.addEventListener("scroll", () => {
       if (globalThis.scrollY >= 50) setScrolled(true);
       else setScrolled(false);
