@@ -11,8 +11,9 @@ enum Option {
 }
 
 const ProjectModal: FunctionComponent = () => {
-  let projects: ProjectType[] = [];
   const film = modalFilm.value!;
+
+  const [projects, setProjects] = useState<ProjectType[]>([]);
 
   const [option, setOption] = useState<Option>(Option.create);
   const [projectIndex, setProjectIndex] = useState<number>(-1);
@@ -26,7 +27,7 @@ const ProjectModal: FunctionComponent = () => {
       document.cookie = `projects=${JSON.stringify([])}`;
       return;
     }
-    projects = JSON.parse(projectsCookie.split("=")[1]);
+    setProjects(JSON.parse(projectsCookie.split("=")[1]));
   }, []);
 
   const createProject = (name: string, film: FilmType) => {
@@ -50,6 +51,7 @@ const ProjectModal: FunctionComponent = () => {
       <span class="closeModal" onClick={(e) => modalSignal.value = false}>
         <i class="fa-solid fa-xmark"></i>
       </span>
+      <h4>{film.name}</h4>
       <div class="options">
         <button onClick={(e) => setOption(Option.create)}>
           Create new project
@@ -64,9 +66,9 @@ const ProjectModal: FunctionComponent = () => {
             <select
               onInput={(e) => setProjectIndex(Number(e.currentTarget.value))}
             >
-              {projects.map((pr, i) => (
-                <option value={i} key={pr.name + i}>{pr.name}</option>
-              ))}
+              {projects.map((pr, i) => {
+                return <option value={i} key={pr.name + i}>{pr.name}</option>;
+              })}
             </select>
           )
           : (
@@ -74,6 +76,7 @@ const ProjectModal: FunctionComponent = () => {
               type="text"
               onInput={(e) => setName(e.currentTarget.value)}
               value={name}
+              placeholder={"New project name..."}
             />
           )}
       </div>

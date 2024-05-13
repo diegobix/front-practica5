@@ -9,7 +9,7 @@ const Films: FunctionComponent<
 > = ({ films }) => {
   return (
     <>
-      <div class="films">
+      <div class={modalSignal.value ? "films modal" : "films"}>
         {films.map((film) => <FilmPreview film={film} key={film._id} />)}
       </div>
       {modalSignal.value && <ProjectModal />}
