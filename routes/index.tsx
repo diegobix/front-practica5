@@ -17,9 +17,5 @@ export const handler: Handlers<FilmType[]> = {
 export default (props: PageProps<FilmType[]>) => {
   const films = props.data;
 
-  return (
-    <MainContainer>
-      <FilmsFilter films={films} />
-    </MainContainer>
-  );
+  return <FilmsFilter films={films} />;
 };

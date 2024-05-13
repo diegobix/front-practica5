@@ -2,10 +2,21 @@ import { Signal } from "@preact/signals";
 import { FunctionComponent } from "preact";
 import { FilterType, FilterValuesType } from "../types.ts";
 import { JSX } from "preact";
+import { useEffect, useState } from "preact/hooks";
 
 const Filter: FunctionComponent<
   { filter: Signal<FilterType>; values: FilterValuesType }
 > = ({ filter, values }) => {
+  const [scrolled, setScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    console.log("Added listener");
+    globalThis.addEventListener("scroll", () => {
+      if (globalThis.scrollY >= 50) setScrolled(true);
+      else setScrolled(false);
+    });
+  }, []);
+
   const handleColor = (e: JSX.TargetedInputEvent<HTMLSelectElement>) => {
     const color = e.currentTarget.value;
     if (color === "any") {
@@ -18,15 +29,18 @@ const Filter: FunctionComponent<
   };
 
   return (
-    <div class="filter">
-      <input
-        type="text"
-        name="name"
-        id="name"
-        value={filter.value.name}
-        onInput={(e) =>
-          filter.value = { ...filter.value, name: e.currentTarget.value }}
-      />
+    <div class={scrolled ? "filter scrolled" : "filter"}>
+      <div class="search">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          value={filter.value.name}
+          onInput={(e) =>
+            filter.value = { ...filter.value, name: e.currentTarget.value }}
+        />
+        <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+      </div>
       <select
         name="brand"
         id="brand"
